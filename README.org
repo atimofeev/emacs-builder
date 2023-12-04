@@ -80,7 +80,12 @@ docker cp temp-emacs-container:/emacs emacs
 docker rm temp-emacs-container
 #+end_src
 
-* Install
+* Install runtime dependencies
+#+begin_src sh
+sudo dnf install -y webkit2gtk4.0 libotf libgccjit libtree-sitter
+#+end_src
+
+* Install Emacs
 #+begin_src sh
 cd emacs
 sudo make install
