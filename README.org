@@ -73,10 +73,13 @@ RUN src/emacs --batch --version
 docker build -t emacs-builder .
 #+end_src
 
-* Gather Code
+* Gather Code and Charsets
 #+begin_src sh
 docker create --name temp-emacs-container emacs-builder
 docker cp temp-emacs-container:/emacs emacs
+docker cp temp-emacs-container:/emacs/etc/charsets emacs/charsets
+sudo mkdir --parents /usr/local/share/emacs/29.1/etc/charsets 
+sudo cp -r emacs/charsets /usr/local/share/emacs/29.1/etc/charsets
 docker rm temp-emacs-container
 #+end_src
 
